@@ -14,6 +14,8 @@
     "react-intl": "^6.6.2",
     "react-native": "0.73.3",
     "react-native-i18n": "^2.0.15",
+    "react-native-modal-selector": "^2.1.2",
+    "react-native-picker-select": "^9.0.1",
     "react-native-tts": "^4.1.0"
   },
   "devDependencies": {

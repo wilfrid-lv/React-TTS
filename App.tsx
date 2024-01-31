@@ -9,7 +9,8 @@ import React, { useState, useEffect } from 'react';
 import type {PropsWithChildren} from 'react';
 import translations from './android/app/src/translation/translations'; 
 import LanguageSelector from './android/app/src/LanguageSelector';
-//import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
+import { IntlProvider } from 'react-intl';
 import Tts from 'react-native-tts';
 import {
   SafeAreaView,
@@ -64,23 +65,41 @@ function Section({children, title}: SectionProps): React.JSX.Element {
 const App: React.FC = () => { /* const App = () => { */
   const [text, setText] = useState('');
   const [voices, setVoices] = useState([]);// pour aller chercher des voix différentes
-
+  const [locale, setLocale] = useState('en');
+  
   Tts.setDefaultLanguage('en-IE');// aller chercher les autre langue (fr, es)
+  
   const speak = () => {
     Tts.speak(text);
   };
+
+  /*const handleLanguageChange = (selectedLocale: string) => {
+    // You can set the selected language/locale here
+    console.log('Selected Locale:', selectedLocale);
+  };*/
+  const handleLanguageChange = (selectedLocale) => {
+    setLocale(selectedLocale);
+  };
  
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Text-to-Speech in React Native</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={setText}
-        value={text}
-        placeholder="Enter text to be spoken"
-      />
-      <Button title="Speak" onPress={speak} />
-    </View>
+    <IntlProvider locale={locale} messages={translations[locale]}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Text-to-Speech in React Native</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={setText}
+          value={text}
+          placeholder="Enter text to be spoken"
+        />
+        <Button title="Speak" onPress={speak} />
+        <LanguageSelector onLanguageChange={handleLanguageChange} />
+        <Text>
+          <FormattedMessage id="greeting" />
+        </Text>
+        
+
+      </View>
+    </IntlProvider>
   );
 };
 
