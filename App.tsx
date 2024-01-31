@@ -72,7 +72,7 @@ const App: React.FC = () => { /* const App = () => { */
  
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Text-to-Speech in React Native</Text>
+      <Text style={styles.title}>Text-to-Speech</Text>
       <TextInput
         style={styles.input}
         onChangeText={setText}
