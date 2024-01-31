@@ -1,10 +1,14 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import ModalSelector from 'react-native-modal-selector';
+import { View, Text } from 'react-native';
+import Picker from '@react-native-picker/picker';
 
-function LanguageSelector({ onLanguageChange }) {
+/*function LanguageSelector({ onLanguageChange }) {
   const handleLanguageSelect = (e) => {
-    //const selectedLocale = e.target.value;
+    const selectedLocale = e.target.value;
+    onLanguageChange(selectedLocale);
+  };*/
+function LanguageSelector({ onLanguageChange }) {
+  const handleLanguageSelect = (selectedLocale) => {
     onLanguageChange(selectedLocale);
   };
 
@@ -28,15 +32,12 @@ function LanguageSelector({ onLanguageChange }) {
   return (
     <View>
       <Text>Please select a language:</Text>
-      <ModalSelector
-        data={data}
-        initValue="Select Language"
-        onChange={handleLanguageSelect}
-      >
-        <TouchableOpacity>
-          <Text>Select Language</Text>
-        </TouchableOpacity>
-      </ModalSelector>
+      <Picker onValueChange={handleLanguageSelect}>
+        <Picker.Item label="English" value="en" />
+        <Picker.Item label="French" value="fr" />
+        <Picker.Item label="Spanish" value="es" />
+        {/* Add other language options if needed */}
+      </Picker>
     </View>
   );
 }
