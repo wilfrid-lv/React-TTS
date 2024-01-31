@@ -96,8 +96,6 @@ const App: React.FC = () => { /* const App = () => { */
         <Text>
           <FormattedMessage id="greeting" />
         </Text>
-        
-
       </View>
     </IntlProvider>
   );
