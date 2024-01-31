@@ -1,8 +1,8 @@
+import React from 'react';
+import { IntlProvider } from 'react-intl';
 import en from './en.json';
 import fr from './fr.json';
 import es from './es.json';
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
 
 const translations = {
   en,
@@ -11,12 +11,11 @@ const translations = {
   // Ajoute d'autres langues au besoin
 };
 
-function Title() {
-  return (
-    <p>
-      <FormattedMessage id="title" defaultMessage="Text-to-Speech in React Native" />
-    </p>
-  );
-}
+const LanguageProvider = ({ children, locale = 'en' }) => (
+  <IntlProvider locale={locale} messages={translations[locale]}>
+    {children}
+  </IntlProvider>
+);
+
 
 export default translations;

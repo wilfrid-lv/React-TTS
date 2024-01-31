@@ -9,7 +9,8 @@ import React, { useState, useEffect } from 'react';
 import type {PropsWithChildren} from 'react';
 import translations from './android/app/src/translation/translations'; 
 import LanguageSelector from './android/app/src/LanguageSelector';
-//import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
+import Title from './traductions.js';
 import Tts from 'react-native-tts';
 import {
   SafeAreaView,
@@ -70,14 +71,16 @@ const App: React.FC = () => { /* const App = () => { */
     Tts.speak(text);
   };
  
+  //<Text style={styles.title}><Title/></Text>
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Text-to-Speech in React Native</Text>
+      <Text style={styles.title}><Title/></Text>
       <TextInput
         style={styles.input}
         onChangeText={setText}
         value={text}
         placeholder="Enter text to be spoken"
+        //placeholder={(translations[locale]as any)['enterTextPlaceholder']}//le as any est là pour que typescript sache qu on peut rentrer de tout type
       />
       <Button title="Speak" onPress={speak} />
     </View>

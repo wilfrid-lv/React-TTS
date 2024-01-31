@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "18.2.0",
     "react-intl": "^6.6.2",
+    "react-intl-universal": "^2.10.1",
     "react-native": "0.73.3",
     "react-native-i18n": "^2.0.15",
     "react-native-tts": "^4.1.0"

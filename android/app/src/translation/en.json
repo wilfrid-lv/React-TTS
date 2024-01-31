@@ -2,5 +2,7 @@
     "greeting": "Hello, World!",
     "buttonLabel": "Click me",
     "App": "My App",
-    "test": "This is a test"
+    "test": "This is a test",
+    "person": "Tutorial by <code>{getPersonName}</code>",
+    "change": "Change Language"
   }
